@@ -22,103 +22,93 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
 .duo-me{background:rgba(200,255,0,.12);color:var(--me);border:1px solid rgba(200,255,0,.25)}
 .duo-dam{background:rgba(179,136,255,.12);color:var(--dam);border:1px solid rgba(179,136,255,.25)}
 
-/* Bottom nav */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);border-top:1px solid var(--border);display:flex;max-width:480px;margin:0 auto}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 14px;cursor:pointer;color:var(--muted);font-size:11px;font-weight:500;border:none;background:none;transition:color .15s}
 .nav-item.active{color:var(--accent)}
 .nav-icon{font-size:20px;line-height:1}
 
-/* Cards */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;margin:1rem 1.25rem 0;overflow:hidden}
 .card-header{padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
 .card-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
-/* Muscle pills */
 .muscle-grid{display:flex;flex-wrap:wrap;gap:7px;padding:1rem 1.25rem}
 .mpill{padding:7px 14px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);transition:all .15s}
 .mpill.active{background:rgba(200,255,0,.12);border-color:rgba(200,255,0,.4);color:var(--accent)}
 
-/* Date */
 .date-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:15px;color:var(--text);font-family:'DM Sans',sans-serif}
 .date-input:focus{outline:none;border-color:rgba(200,255,0,.4)}
 
-/* Exercise block */
 .ex-block{border-bottom:1px solid var(--border)}
 .ex-block:last-child{border-bottom:none}
-.ex-header{display:flex;align-items:center;justify-content:space-between;padding:12px 1.1rem;cursor:pointer;gap:8px}
-.ex-header-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.ex-header{display:flex;align-items:center;padding:12px 1.1rem;cursor:pointer;gap:8px}
 .ex-toggle{font-size:11px;color:var(--muted);transition:transform .2s;flex-shrink:0}
 .ex-toggle.open{transform:rotate(90deg)}
-.ex-name{font-size:14px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ex-summary{font-size:12px;color:var(--muted);white-space:nowrap}
+.ex-name{font-size:14px;font-weight:500;color:var(--text);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-summary{font-size:12px;color:var(--muted);white-space:nowrap;flex-shrink:0}
 .del-btn{background:none;border:none;color:var(--muted);font-size:15px;cursor:pointer;padding:4px;flex-shrink:0}
 
-/* Sets panel */
 .sets-panel{display:none;padding:0 1.1rem 12px}
 .sets-panel.open{display:block}
 
-/* Column headers */
-.sets-col-headers{display:grid;grid-template-columns:28px 1fr 1fr 1fr 28px;gap:6px;align-items:center;margin-bottom:6px;padding:0 2px}
-.col-h{font-size:10px;font-weight:600;letter-spacing:.06em;text-align:center;color:var(--muted)}
-.col-h.me{color:var(--me)}
-.col-h.dam{color:var(--dam)}
+.set-block{background:var(--surface2);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.set-block-header{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;border-bottom:1px solid var(--border)}
+.set-label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em}
+.del-set{background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;padding:2px 4px;line-height:1}
 
-/* Set row */
-.set-row{display:grid;grid-template-columns:28px 1fr 1fr 1fr 28px;gap:6px;align-items:center;margin-bottom:6px}
-.set-num{font-size:12px;font-weight:600;color:var(--muted);text-align:center}
-.s-input{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 4px;font-size:14px;font-weight:500;text-align:center;color:var(--text);font-family:'DM Sans',sans-serif;width:100%;-moz-appearance:textfield}
+.set-persons{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.set-person{background:var(--surface2);padding:8px 10px}
+.person-label{font-size:10px;font-weight:600;letter-spacing:.07em;margin-bottom:6px}
+.person-label.me{color:var(--me)}
+.person-label.dam{color:var(--dam)}
+.person-inputs{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.inp-group{display:flex;flex-direction:column;gap:3px}
+.inp-label{font-size:9px;color:var(--muted);letter-spacing:.05em;text-align:center}
+.s-input{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:7px 4px;font-size:14px;font-weight:500;text-align:center;color:var(--text);font-family:'DM Sans',sans-serif;width:100%;-moz-appearance:textfield}
 .s-input::-webkit-outer-spin-button,.s-input::-webkit-inner-spin-button{-webkit-appearance:none}
-.s-input:focus{outline:none}
-.s-input.reps:focus{border-color:rgba(255,255,255,.25)}
-.s-input.me-w:focus{border-color:rgba(200,255,0,.5)}
-.s-input.dam-w:focus{border-color:rgba(179,136,255,.5)}
-.del-set{background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;padding:2px;text-align:center}
+.s-input.me-inp:focus{outline:none;border-color:rgba(200,255,0,.5)}
+.s-input.dam-inp:focus{outline:none;border-color:rgba(179,136,255,.5)}
 
-/* Add set / exercise buttons */
-.add-set-btn{background:none;border:1px dashed var(--border);border-radius:8px;color:var(--muted);font-size:12px;cursor:pointer;padding:6px;width:100%;margin-top:4px;font-family:'DM Sans',sans-serif;transition:border-color .15s}
+.add-set-btn{background:none;border:1px dashed var(--border);border-radius:8px;color:var(--muted);font-size:12px;cursor:pointer;padding:7px;width:100%;margin-top:4px;font-family:'DM Sans',sans-serif;transition:border-color .15s}
 .add-set-btn:hover{border-color:var(--muted)}
+
 .add-row{display:flex;gap:8px;margin:10px 1.1rem 0}
 .add-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif}
 .add-input:focus{outline:none;border-color:rgba(200,255,0,.4)}
 .add-input::placeholder{color:var(--muted)}
 .add-btn{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--accent);font-size:20px;cursor:pointer;line-height:1}
 
-/* Save */
 .save-btn{display:block;width:calc(100% - 2.5rem);margin:1.25rem auto 0;background:var(--accent);color:#000;border:none;border-radius:12px;padding:15px;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;cursor:pointer}
 .save-btn:active{transform:scale(.98)}
 
-/* History */
 .session-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin:1rem 1.25rem 0;overflow:hidden}
 .session-head{padding:.9rem 1.1rem;display:flex;justify-content:space-between;align-items:flex-start}
 .session-date{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.04em}
 .session-muscle{font-size:12px;color:var(--muted);margin-top:2px}
 .session-del{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;padding:4px;line-height:1}
-
-/* History exercise block */
 .h-ex{border-top:1px solid var(--border);padding:10px 1.1rem}
-.h-ex-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
-.h-sets-table{width:100%;border-collapse:collapse;font-size:12px}
-.h-sets-table th{color:var(--muted);font-weight:600;letter-spacing:.05em;font-size:10px;padding:3px 6px;text-align:center}
-.h-sets-table td{padding:4px 6px;text-align:center;border-top:1px solid var(--border)}
-.h-sets-table td:nth-child(3){color:var(--me);font-weight:500}
-.h-sets-table td:nth-child(4){color:var(--dam);font-weight:500}
-.win-badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:500}
+.h-ex-name{font-size:13px;font-weight:600;margin-bottom:8px}
+.h-set{display:grid;grid-template-columns:28px 1fr 1fr;gap:6px;align-items:start;margin-bottom:6px}
+.h-set-num{font-size:11px;font-weight:600;color:var(--muted);padding-top:3px}
+.h-person{padding:4px 8px;border-radius:7px;font-size:12px}
+.h-me{background:rgba(200,255,0,.06)}
+.h-dam{background:rgba(179,136,255,.06)}
+.h-person-label{font-size:10px;font-weight:600;margin-bottom:2px}
+.h-person-label.me{color:var(--me)}
+.h-person-label.dam{color:var(--dam)}
+.win-badge{display:inline-block;padding:1px 7px;border-radius:20px;font-size:10px;font-weight:500;margin-left:4px}
 .win-me{background:rgba(200,255,0,.12);color:var(--me)}
 .win-dam{background:rgba(179,136,255,.12);color:var(--dam)}
 .win-tie{background:rgba(255,255,255,.07);color:var(--muted)}
 
-/* Stats */
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 1.25rem;margin-top:1rem}
 .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem}
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;line-height:1}
 .stat-label{font-size:12px;color:var(--muted);margin-top:4px}
 .pr-table{width:100%;border-collapse:collapse;font-size:12px}
 .pr-table th{padding:7px 10px;text-align:left;font-size:10px;letter-spacing:.07em;font-weight:600;color:var(--muted);border-bottom:1px solid var(--border)}
-.pr-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.pr-table td{padding:8px 10px;border-bottom:1px solid var(--border)}
 .pr-table tr:last-child td{border-bottom:none}
-.pr-val{font-weight:500}
 
-/* Misc */
 .section-gap{height:1rem}
 .empty{text-align:center;padding:3rem 1.5rem;color:var(--muted)}
 .empty-icon{font-size:3rem;margin-bottom:1rem}
@@ -143,7 +133,6 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
     </div>
   </header>
 
-  <!-- REGISTRAR -->
   <div id="tab-registro" class="tab-content active">
     <div style="padding:1rem 1.25rem 0">
       <div class="card-title" style="margin-bottom:8px">Fecha</div>
@@ -160,11 +149,8 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
       <div class="mpill" onclick="selectMuscle(this,'Brazos')">💪 Brazos</div>
       <div class="mpill" onclick="selectMuscle(this,'Full Body')">⚡ Full Body</div>
     </div>
-
     <div class="card">
-      <div class="card-header">
-        <span class="card-title">Ejercicios — Serie / Reps / Kg Yo / Kg Damián</span>
-      </div>
+      <div class="card-header"><span class="card-title">Ejercicios</span></div>
       <div id="exercise-list"></div>
       <div class="add-row">
         <input class="add-input" id="new-ex" type="text" placeholder="Agregar ejercicio..." onkeydown="if(event.key==='Enter')addExercise()" />
@@ -172,17 +158,14 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
       </div>
       <div style="height:12px"></div>
     </div>
-
     <button class="save-btn" onclick="guardarSesion()">Guardar sesión</button>
     <div class="section-gap"></div>
   </div>
 
-  <!-- HISTORIAL -->
   <div id="tab-historial" class="tab-content">
     <div id="historial-content"></div>
   </div>
 
-  <!-- STATS -->
   <div id="tab-stats" class="tab-content">
     <div id="stats-content"></div>
   </div>
@@ -205,11 +188,10 @@ const EXERCISES = {
 };
 
 let currentMuscle = 'Pecho';
-// exercises: [{name, open, sets: [{reps, me, dam}]}]
 let exercises = [];
-let sessions = JSON.parse(localStorage.getItem('gymtrack_v2') || '[]');
+let sessions = JSON.parse(localStorage.getItem('gymtrack_v3') || '[]');
 
-function makeSet(){ return {reps:'', me:'', dam:''} }
+function makeSet(){ return {meReps:'', meKg:'', damReps:'', damKg:''} }
 function makeExercise(name){ return {name, open:true, sets:[makeSet(), makeSet(), makeSet()]} }
 
 function init(){
@@ -239,69 +221,69 @@ function addExercise(){
   render();
 }
 
-function removeExercise(i){
-  exercises.splice(i,1);
-  render();
-}
-
-function toggleEx(i){
-  exercises[i].open = !exercises[i].open;
-  render();
-}
-
-function addSet(i){
-  exercises[i].sets.push(makeSet());
-  render();
-  // keep open
-  exercises[i].open = true;
-}
-
-function removeSet(i, si){
-  if(exercises[i].sets.length <= 1) return;
-  exercises[i].sets.splice(si,1);
-  render();
-}
+function removeExercise(i){ exercises.splice(i,1); render(); }
+function toggleEx(i){ exercises[i].open = !exercises[i].open; render(); }
+function addSet(i){ exercises[i].sets.push(makeSet()); render(); }
+function removeSet(i,si){ if(exercises[i].sets.length<=1) return; exercises[i].sets.splice(si,1); render(); }
 
 function readDOM(){
-  document.querySelectorAll('.ex-block').forEach((block, i) => {
-    block.querySelectorAll('.set-row').forEach((row, si) => {
-      const inputs = row.querySelectorAll('input');
-      if(exercises[i] && exercises[i].sets[si]){
-        exercises[i].sets[si].reps = inputs[0].value;
-        exercises[i].sets[si].me   = inputs[1].value;
-        exercises[i].sets[si].dam  = inputs[2].value;
-      }
+  document.querySelectorAll('.ex-block').forEach((block,i)=>{
+    if(!exercises[i]) return;
+    block.querySelectorAll('.set-block').forEach((sb,si)=>{
+      if(!exercises[i].sets[si]) return;
+      const inputs = sb.querySelectorAll('input');
+      exercises[i].sets[si].meReps  = inputs[0].value;
+      exercises[i].sets[si].meKg    = inputs[1].value;
+      exercises[i].sets[si].damReps = inputs[2].value;
+      exercises[i].sets[si].damKg   = inputs[3].value;
     });
   });
 }
 
 function render(){
-  const list = document.getElementById('exercise-list');
-  list.innerHTML = exercises.map((ex, i) => `
+  document.getElementById('exercise-list').innerHTML = exercises.map((ex,i)=>`
     <div class="ex-block">
       <div class="ex-header" onclick="readDOM();toggleEx(${i})">
-        <div class="ex-header-left">
-          <span class="ex-toggle ${ex.open?'open':''}">▶</span>
-          <span class="ex-name">${ex.name}</span>
-        </div>
+        <span class="ex-toggle ${ex.open?'open':''}">▶</span>
+        <span class="ex-name">${ex.name}</span>
         <span class="ex-summary">${ex.sets.length} series</span>
         <button class="del-btn" onclick="event.stopPropagation();readDOM();removeExercise(${i})">✕</button>
       </div>
       <div class="sets-panel ${ex.open?'open':''}">
-        <div class="sets-col-headers">
-          <div></div>
-          <div class="col-h">Reps</div>
-          <div class="col-h me">Yo kg</div>
-          <div class="col-h dam">Dam kg</div>
-          <div></div>
-        </div>
-        ${ex.sets.map((s, si) => `
-          <div class="set-row">
-            <div class="set-num">${si+1}</div>
-            <input class="s-input reps" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.reps}" onchange="exercises[${i}].sets[${si}].reps=this.value" />
-            <input class="s-input me-w" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.me}" onchange="exercises[${i}].sets[${si}].me=this.value" />
-            <input class="s-input dam-w" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.dam}" onchange="exercises[${i}].sets[${si}].dam=this.value" />
-            <button class="del-set" onclick="readDOM();removeSet(${i},${si})">✕</button>
+        ${ex.sets.map((s,si)=>`
+          <div class="set-block">
+            <div class="set-block-header">
+              <span class="set-label">SERIE ${si+1}</span>
+              <button class="del-set" onclick="readDOM();removeSet(${i},${si})">✕</button>
+            </div>
+            <div class="set-persons">
+              <div class="set-person">
+                <div class="person-label me">YO</div>
+                <div class="person-inputs">
+                  <div class="inp-group">
+                    <span class="inp-label">REPS</span>
+                    <input class="s-input me-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.meReps}" onchange="exercises[${i}].sets[${si}].meReps=this.value"/>
+                  </div>
+                  <div class="inp-group">
+                    <span class="inp-label">KG</span>
+                    <input class="s-input me-inp" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.meKg}" onchange="exercises[${i}].sets[${si}].meKg=this.value"/>
+                  </div>
+                </div>
+              </div>
+              <div class="set-person">
+                <div class="person-label dam">DAMIÁN</div>
+                <div class="person-inputs">
+                  <div class="inp-group">
+                    <span class="inp-label">REPS</span>
+                    <input class="s-input dam-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.damReps}" onchange="exercises[${i}].sets[${si}].damReps=this.value"/>
+                  </div>
+                  <div class="inp-group">
+                    <span class="inp-label">KG</span>
+                    <input class="s-input dam-inp" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.damKg}" onchange="exercises[${i}].sets[${si}].damKg=this.value"/>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         `).join('')}
         <button class="add-set-btn" onclick="readDOM();addSet(${i})">+ Agregar serie</button>
@@ -314,127 +296,97 @@ function guardarSesion(){
   readDOM();
   const fecha = document.getElementById('fecha').value;
   if(!fecha){ alert('Elegí una fecha'); return; }
-
-  const exFilled = exercises
-    .map(ex => ({
-      ...ex,
-      sets: ex.sets.filter(s => s.reps || s.me || s.dam)
-    }))
-    .filter(ex => ex.sets.length > 0);
-
+  const exFilled = exercises.map(ex=>({...ex, sets:ex.sets.filter(s=>s.meReps||s.meKg||s.damReps||s.damKg)})).filter(ex=>ex.sets.length>0);
   if(!exFilled.length){ alert('Ingresá al menos una serie con datos'); return; }
-
-  const session = { id: Date.now(), fecha, muscle: currentMuscle, exercises: exFilled };
+  const session = {id:Date.now(), fecha, muscle:currentMuscle, exercises:exFilled};
   sessions.unshift(session);
-  localStorage.setItem('gymtrack_v2', JSON.stringify(sessions));
+  localStorage.setItem('gymtrack_v3', JSON.stringify(sessions));
   showToast('✓ Sesión guardada 💪');
   loadExercises(currentMuscle);
 }
 
 function showToast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2500);
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
 }
 
 function showTab(tab){
   document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(el=>el.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
-  const idx = ['registro','historial','stats'].indexOf(tab);
-  document.querySelectorAll('.nav-item')[idx].classList.add('active');
+  ['registro','historial','stats'].forEach((t,i)=>{ if(t===tab) document.querySelectorAll('.nav-item')[i].classList.add('active'); });
   if(tab==='historial') renderHistorial();
   if(tab==='stats') renderStats();
 }
 
 function formatFecha(f){
-  const [y,m,d] = f.split('-');
+  const [y,m,d]=f.split('-');
   const months=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
   return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
 }
 
 function renderHistorial(){
-  const el = document.getElementById('historial-content');
-  if(!sessions.length){
-    el.innerHTML = `<div class="empty"><div class="empty-icon">🏋️</div><div class="empty-text">No hay sesiones todavía.<br>¡A entrenar!</div></div>`;
-    return;
-  }
-  el.innerHTML = sessions.map(s => `
+  const el=document.getElementById('historial-content');
+  if(!sessions.length){ el.innerHTML=`<div class="empty"><div class="empty-icon">🏋️</div><div class="empty-text">No hay sesiones todavía.<br>¡A entrenar!</div></div>`; return; }
+  el.innerHTML=sessions.map(s=>`
     <div class="session-card">
       <div class="session-head">
-        <div>
-          <div class="session-date">${formatFecha(s.fecha)}</div>
-          <div class="session-muscle">${s.muscle}</div>
-        </div>
+        <div><div class="session-date">${formatFecha(s.fecha)}</div><div class="session-muscle">${s.muscle}</div></div>
         <button class="session-del" onclick="deleteSession(${s.id})">🗑</button>
       </div>
-      ${s.exercises.map(ex => {
-        return `<div class="h-ex">
+      ${s.exercises.map(ex=>`
+        <div class="h-ex">
           <div class="h-ex-name">${ex.name}</div>
-          <table class="h-sets-table">
-            <thead><tr>
-              <th>Serie</th><th>Reps</th>
-              <th style="color:var(--me)">Yo kg</th>
-              <th style="color:var(--dam)">Dam kg</th>
-              <th>👑</th>
-            </tr></thead>
-            <tbody>
-              ${ex.sets.map((s,si) => {
-                const me = parseFloat(s.me)||0, dam = parseFloat(s.dam)||0;
-                let badge = '';
-                if(me && dam){
-                  if(me>dam) badge='<span class="win-badge win-me">Yo</span>';
-                  else if(dam>me) badge='<span class="win-badge win-dam">Dam</span>';
-                  else badge='<span class="win-badge win-tie">—</span>';
-                }
-                return `<tr>
-                  <td>${si+1}</td>
-                  <td>${s.reps||'-'}</td>
-                  <td>${s.me||'-'}</td>
-                  <td>${s.dam||'-'}</td>
-                  <td>${badge}</td>
-                </tr>`;
-              }).join('')}
-            </tbody>
-          </table>
-        </div>`;
-      }).join('')}
+          ${ex.sets.map((set,si)=>{
+            const meKg=parseFloat(set.meKg)||0, damKg=parseFloat(set.damKg)||0;
+            let winMe='', winDam='';
+            if(meKg&&damKg){
+              if(meKg>damKg) winMe='<span class="win-badge win-me">👑</span>';
+              else if(damKg>meKg) winDam='<span class="win-badge win-dam">👑</span>';
+            }
+            return `<div class="h-set">
+              <div class="h-set-num">S${si+1}</div>
+              <div class="h-person h-me">
+                <div class="h-person-label me">YO ${winMe}</div>
+                <div>${set.meReps||'—'} reps · ${set.meKg||'—'} kg</div>
+              </div>
+              <div class="h-person h-dam">
+                <div class="h-person-label dam">DAMIÁN ${winDam}</div>
+                <div>${set.damReps||'—'} reps · ${set.damKg||'—'} kg</div>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      `).join('')}
     </div>
   `).join('');
 }
 
 function deleteSession(id){
   if(!confirm('¿Eliminar esta sesión?')) return;
-  sessions = sessions.filter(s=>s.id!==id);
-  localStorage.setItem('gymtrack_v2', JSON.stringify(sessions));
+  sessions=sessions.filter(s=>s.id!==id);
+  localStorage.setItem('gymtrack_v3',JSON.stringify(sessions));
   renderHistorial();
 }
 
 function renderStats(){
-  const el = document.getElementById('stats-content');
-  if(!sessions.length){
-    el.innerHTML = `<div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Registrá sesiones para ver estadísticas.</div></div>`;
-    return;
-  }
-
-  let meWins=0, damWins=0, total=0;
-  const prMe={}, prDam={};
-
-  sessions.forEach(s => {
-    s.exercises.forEach(ex => {
-      ex.sets.forEach(set => {
-        const me=parseFloat(set.me)||0, dam=parseFloat(set.dam)||0;
+  const el=document.getElementById('stats-content');
+  if(!sessions.length){ el.innerHTML=`<div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Registrá sesiones para ver estadísticas.</div></div>`; return; }
+  let meWins=0,damWins=0,total=0;
+  const prMe={},prDam={};
+  sessions.forEach(s=>{
+    s.exercises.forEach(ex=>{
+      ex.sets.forEach(set=>{
+        const me=parseFloat(set.meKg)||0,dam=parseFloat(set.damKg)||0;
         if(me&&dam){ total++; if(me>dam) meWins++; else if(dam>me) damWins++; }
-        if(me && (!prMe[ex.name]||me>prMe[ex.name])) prMe[ex.name]=me;
-        if(dam && (!prDam[ex.name]||dam>prDam[ex.name])) prDam[ex.name]=dam;
+        if(me&&(!prMe[ex.name]||me>prMe[ex.name])) prMe[ex.name]=me;
+        if(dam&&(!prDam[ex.name]||dam>prDam[ex.name])) prDam[ex.name]=dam;
       });
     });
   });
-
-  const allEx = [...new Set([...Object.keys(prMe),...Object.keys(prDam)])];
-
-  el.innerHTML = `
+  const allEx=[...new Set([...Object.keys(prMe),...Object.keys(prDam)])];
+  el.innerHTML=`
     <div class="stats-grid">
       <div class="stat-box"><div class="stat-num" style="color:var(--text)">${sessions.length}</div><div class="stat-label">Sesiones</div></div>
       <div class="stat-box"><div class="stat-num" style="color:var(--text)">${total}</div><div class="stat-label">Series comparadas</div></div>
@@ -442,16 +394,10 @@ function renderStats(){
       <div class="stat-box"><div class="stat-num" style="color:var(--dam)">${damWins}</div><div class="stat-label">Victorias Damián</div></div>
     </div>
     <div class="card" style="margin-top:1rem">
-      <div class="card-header"><span class="card-title">Récord de peso máximo por ejercicio</span></div>
+      <div class="card-header"><span class="card-title">Récord de peso máximo</span></div>
       <table class="pr-table">
         <thead><tr><th>Ejercicio</th><th style="color:var(--me)">Yo</th><th style="color:var(--dam)">Damián</th></tr></thead>
-        <tbody>
-          ${allEx.map(ex=>`<tr>
-            <td>${ex}</td>
-            <td class="pr-val" style="color:var(--me)">${prMe[ex]?prMe[ex]+' kg':'-'}</td>
-            <td class="pr-val" style="color:var(--dam)">${prDam[ex]?prDam[ex]+' kg':'-'}</td>
-          </tr>`).join('')}
-        </tbody>
+        <tbody>${allEx.map(ex=>`<tr><td>${ex}</td><td style="color:var(--me);font-weight:500">${prMe[ex]?prMe[ex]+' kg':'-'}</td><td style="color:var(--dam);font-weight:500">${prDam[ex]?prDam[ex]+' kg':'-'}</td></tr>`).join('')}</tbody>
       </table>
     </div>
     <div class="section-gap"></div>
