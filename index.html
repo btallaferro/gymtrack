@@ -417,7 +417,7 @@ function renderExercises(arr,listId,isModal){
     <div class="ex-block">
       <div class="ex-header" onclick="readDOM('${listId}',${isModal});toggleEx(${i},'${listId}',${isModal})">
         <span class="ex-toggle ${ex.open?'open':''}">▶</span>
-        <span class="ex-name">${ex.name}</span>
+        <input class="ex-name" value="${ex.name}" onclick="event.stopPropagation()" onchange="${isModal?'modalExercises':'exercises'}[${i}].name=this.value" style="background:none;border:none;border-bottom:1px solid var(--border);border-radius:0;padding:2px 0;width:120px;font-size:15px;font-weight:500;color:var(--text);font-family:'Barlow',sans-serif"/>
         <span class="ex-summary">${ex.sets.length} series</span>
         <button class="del-btn" onclick="event.stopPropagation();readDOM('${listId}',${isModal});removeExercise(${i},'${listId}',${isModal})">✕</button>
       </div>
