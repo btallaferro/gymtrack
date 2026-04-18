@@ -21,6 +21,12 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
 .duo-badge{padding:3px 10px;border-radius:20px;font-size:12px;font-weight:500}
 .duo-me{background:rgba(200,255,0,.12);color:var(--me);border:1px solid rgba(200,255,0,.25)}
 .duo-dam{background:rgba(179,136,255,.12);color:var(--dam);border:1px solid rgba(179,136,255,.25)}
+.sync-status{font-size:11px;margin-top:6px;display:flex;align-items:center;gap:5px}
+.sync-dot{width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.sync-dot.ok{background:#4caf50}
+.sync-dot.err{background:var(--danger)}
+.sync-dot.loading{background:#ff9800;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);border-top:1px solid var(--border);display:flex;max-width:480px;margin:0 auto}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 14px;cursor:pointer;color:var(--muted);font-size:11px;font-weight:500;border:none;background:none;transition:color .15s}
@@ -68,9 +74,7 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
 .s-input.me-inp:focus{outline:none;border-color:rgba(200,255,0,.5)}
 .s-input.dam-inp:focus{outline:none;border-color:rgba(179,136,255,.5)}
 
-.add-set-btn{background:none;border:1px dashed var(--border);border-radius:8px;color:var(--muted);font-size:12px;cursor:pointer;padding:7px;width:100%;margin-top:4px;font-family:'DM Sans',sans-serif;transition:border-color .15s}
-.add-set-btn:hover{border-color:var(--muted)}
-
+.add-set-btn{background:none;border:1px dashed var(--border);border-radius:8px;color:var(--muted);font-size:12px;cursor:pointer;padding:7px;width:100%;margin-top:4px;font-family:'DM Sans',sans-serif}
 .add-row{display:flex;gap:8px;margin:10px 1.1rem 0}
 .add-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif}
 .add-input:focus{outline:none;border-color:rgba(200,255,0,.4)}
@@ -79,6 +83,7 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
 
 .save-btn{display:block;width:calc(100% - 2.5rem);margin:1.25rem auto 0;background:var(--accent);color:#000;border:none;border-radius:12px;padding:15px;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;cursor:pointer}
 .save-btn:active{transform:scale(.98)}
+.save-btn:disabled{opacity:.5;cursor:not-allowed}
 
 .session-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin:1rem 1.25rem 0;overflow:hidden}
 .session-head{padding:.9rem 1.1rem;display:flex;justify-content:space-between;align-items:flex-start}
@@ -98,7 +103,6 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
 .win-badge{display:inline-block;padding:1px 7px;border-radius:20px;font-size:10px;font-weight:500;margin-left:4px}
 .win-me{background:rgba(200,255,0,.12);color:var(--me)}
 .win-dam{background:rgba(179,136,255,.12);color:var(--dam)}
-.win-tie{background:rgba(255,255,255,.07);color:var(--muted)}
 
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 1.25rem;margin-top:1rem}
 .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem}
@@ -115,13 +119,15 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
 .empty-text{font-size:15px;line-height:1.6}
 .toast{position:fixed;top:1.25rem;left:50%;transform:translateX(-50%) translateY(-120px);background:var(--accent);color:#000;padding:10px 20px;border-radius:10px;font-weight:600;font-size:14px;z-index:999;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
 .toast.show{transform:translateX(-50%) translateY(0)}
+.toast.err{background:var(--danger);color:#fff}
 .tab-content{display:none}
 .tab-content.active{display:block}
+.loading-bar{text-align:center;padding:2rem;color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
 
-<div id="toast" class="toast">✓ Sesión guardada</div>
+<div id="toast" class="toast"></div>
 
 <div class="app">
   <header>
@@ -130,6 +136,10 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
       <div class="duo-badge duo-me">Yo</div>
       <span style="color:var(--muted);font-size:12px">vs</span>
       <div class="duo-badge duo-dam">Damián</div>
+    </div>
+    <div class="sync-status">
+      <div class="sync-dot loading" id="sync-dot"></div>
+      <span id="sync-text" style="color:var(--muted)">Conectando...</span>
     </div>
   </header>
 
@@ -158,7 +168,7 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
       </div>
       <div style="height:12px"></div>
     </div>
-    <button class="save-btn" onclick="guardarSesion()">Guardar sesión</button>
+    <button class="save-btn" id="save-btn" onclick="guardarSesion()">Guardar sesión</button>
     <div class="section-gap"></div>
   </div>
 
@@ -178,6 +188,50 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
 </div>
 
 <script>
+// ── Supabase config ──────────────────────────────────────
+const SUPABASE_URL = 'https://fknldrnprmmndalntesa.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Fy26LBVWwoUkByuu_LDARw_N1fUUfPH';
+
+async function sbFetch(path, options = {}) {
+  const res = await fetch(SUPABASE_URL + path, {
+    ...options,
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': options.prefer || '',
+      ...options.headers
+    }
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(err);
+  }
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
+
+async function getSessions() {
+  return await sbFetch('/rest/v1/sessions?select=*&order=fecha.desc,id.desc');
+}
+
+async function insertSession(session) {
+  return await sbFetch('/rest/v1/sessions', {
+    method: 'POST',
+    prefer: 'return=representation',
+    body: JSON.stringify({
+      fecha: session.fecha,
+      muscle: session.muscle,
+      exercises: session.exercises
+    })
+  });
+}
+
+async function deleteSessionDB(id) {
+  return await sbFetch('/rest/v1/sessions?id=eq.' + id, { method: 'DELETE' });
+}
+
+// ── Exercises config ─────────────────────────────────────
 const EXERCISES = {
   'Pecho':    ['Press banca plano','Press banca inclinado','Aperturas con mancuerna','Fondos en paralelas','Pec deck / mariposa','Press banca declinado'],
   'Espalda':  ['Dominadas','Remo con barra','Jalón al pecho','Remo sentado en polea','Pullover con mancuerna','Remo con mancuerna'],
@@ -189,15 +243,30 @@ const EXERCISES = {
 
 let currentMuscle = 'Pecho';
 let exercises = [];
-let sessions = JSON.parse(localStorage.getItem('gymtrack_v3') || '[]');
+let sessions = [];
 
 function makeSet(){ return {meReps:'', meKg:'', damReps:'', damKg:''} }
 function makeExercise(name){ return {name, open:true, sets:[makeSet(), makeSet(), makeSet()]} }
 
-function init(){
+async function init(){
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('fecha').value = today;
   loadExercises(currentMuscle);
+  setSyncStatus('loading', 'Conectando...');
+  try {
+    sessions = await getSessions();
+    setSyncStatus('ok', 'Sincronizado ☁️');
+  } catch(e) {
+    setSyncStatus('err', 'Sin conexión');
+    showToast('Error al conectar con la nube', true);
+  }
+}
+
+function setSyncStatus(state, text) {
+  const dot = document.getElementById('sync-dot');
+  const txt = document.getElementById('sync-text');
+  dot.className = 'sync-dot ' + state;
+  txt.textContent = text;
 }
 
 function selectMuscle(el, muscle){
@@ -292,23 +361,42 @@ function render(){
   `).join('');
 }
 
-function guardarSesion(){
+async function guardarSesion(){
   readDOM();
   const fecha = document.getElementById('fecha').value;
   if(!fecha){ alert('Elegí una fecha'); return; }
-  const exFilled = exercises.map(ex=>({...ex, sets:ex.sets.filter(s=>s.meReps||s.meKg||s.damReps||s.damKg)})).filter(ex=>ex.sets.length>0);
+
+  const exFilled = exercises
+    .map(ex=>({...ex, sets:ex.sets.filter(s=>s.meReps||s.meKg||s.damReps||s.damKg)}))
+    .filter(ex=>ex.sets.length>0);
   if(!exFilled.length){ alert('Ingresá al menos una serie con datos'); return; }
-  const session = {id:Date.now(), fecha, muscle:currentMuscle, exercises:exFilled};
-  sessions.unshift(session);
-  localStorage.setItem('gymtrack_v3', JSON.stringify(sessions));
-  showToast('✓ Sesión guardada 💪');
-  loadExercises(currentMuscle);
+
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  btn.textContent = 'Guardando...';
+  setSyncStatus('loading', 'Guardando...');
+
+  try {
+    const saved = await insertSession({ fecha, muscle: currentMuscle, exercises: exFilled });
+    sessions = await getSessions();
+    setSyncStatus('ok', 'Sincronizado ☁️');
+    showToast('✓ Sesión guardada 💪');
+    loadExercises(currentMuscle);
+  } catch(e) {
+    setSyncStatus('err', 'Error al guardar');
+    showToast('Error al guardar. Revisá la conexión.', true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Guardar sesión';
+  }
 }
 
-function showToast(msg){
+function showToast(msg, isErr=false){
   const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
+  t.textContent=msg;
+  t.className='toast'+(isErr?' err':'');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
 }
 
 function showTab(tab){
@@ -326,9 +414,19 @@ function formatFecha(f){
   return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
 }
 
-function renderHistorial(){
+async function renderHistorial(){
   const el=document.getElementById('historial-content');
-  if(!sessions.length){ el.innerHTML=`<div class="empty"><div class="empty-icon">🏋️</div><div class="empty-text">No hay sesiones todavía.<br>¡A entrenar!</div></div>`; return; }
+  el.innerHTML='<div class="loading-bar">Cargando...</div>';
+  try {
+    sessions = await getSessions();
+    setSyncStatus('ok','Sincronizado ☁️');
+  } catch(e) {
+    setSyncStatus('err','Sin conexión');
+  }
+  if(!sessions||!sessions.length){
+    el.innerHTML=`<div class="empty"><div class="empty-icon">🏋️</div><div class="empty-text">No hay sesiones todavía.<br>¡A entrenar!</div></div>`;
+    return;
+  }
   el.innerHTML=sessions.map(s=>`
     <div class="session-card">
       <div class="session-head">
@@ -363,16 +461,30 @@ function renderHistorial(){
   `).join('');
 }
 
-function deleteSession(id){
+async function deleteSession(id){
   if(!confirm('¿Eliminar esta sesión?')) return;
-  sessions=sessions.filter(s=>s.id!==id);
-  localStorage.setItem('gymtrack_v3',JSON.stringify(sessions));
-  renderHistorial();
+  try {
+    await deleteSessionDB(id);
+    sessions = sessions.filter(s=>s.id!==id);
+    renderHistorial();
+    showToast('Sesión eliminada');
+  } catch(e) {
+    showToast('Error al eliminar', true);
+  }
 }
 
-function renderStats(){
+async function renderStats(){
   const el=document.getElementById('stats-content');
-  if(!sessions.length){ el.innerHTML=`<div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Registrá sesiones para ver estadísticas.</div></div>`; return; }
+  el.innerHTML='<div class="loading-bar">Cargando...</div>';
+  try {
+    sessions = await getSessions();
+  } catch(e) {}
+
+  if(!sessions||!sessions.length){
+    el.innerHTML=`<div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Registrá sesiones para ver estadísticas.</div></div>`;
+    return;
+  }
+
   let meWins=0,damWins=0,total=0;
   const prMe={},prDam={};
   sessions.forEach(s=>{
@@ -385,6 +497,7 @@ function renderStats(){
       });
     });
   });
+
   const allEx=[...new Set([...Object.keys(prMe),...Object.keys(prDam)])];
   el.innerHTML=`
     <div class="stats-grid">
@@ -397,7 +510,11 @@ function renderStats(){
       <div class="card-header"><span class="card-title">Récord de peso máximo</span></div>
       <table class="pr-table">
         <thead><tr><th>Ejercicio</th><th style="color:var(--me)">Yo</th><th style="color:var(--dam)">Damián</th></tr></thead>
-        <tbody>${allEx.map(ex=>`<tr><td>${ex}</td><td style="color:var(--me);font-weight:500">${prMe[ex]?prMe[ex]+' kg':'-'}</td><td style="color:var(--dam);font-weight:500">${prDam[ex]?prDam[ex]+' kg':'-'}</td></tr>`).join('')}</tbody>
+        <tbody>${allEx.map(ex=>`<tr>
+          <td>${ex}</td>
+          <td style="color:var(--me);font-weight:500">${prMe[ex]?prMe[ex]+' kg':'-'}</td>
+          <td style="color:var(--dam);font-weight:500">${prDam[ex]?prDam[ex]+' kg':'-'}</td>
+        </tr>`).join('')}</tbody>
       </table>
     </div>
     <div class="section-gap"></div>
