@@ -267,7 +267,7 @@ header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
         <select class="ex-select" id="ex-select" onchange="renderChart()"></select>
         <div class="filter-label">Persona</div>
         <div class="person-pills">
-          <div class="ppill active-me" id="pill-me" onclick="togglePerson('me')">Yo</div>
+          <div class="ppill active-me" id="pill-me" onclick="togglePerson('me')">Bruno</div>
           <div class="ppill active-dam" id="pill-dam" onclick="togglePerson('dam')">Damián</div>
         </div>
       </div>
@@ -435,7 +435,7 @@ function renderExercises(arr,listId,isModal){
             </div>
             <div class="set-persons">
               <div class="set-person">
-                <div class="person-label me">YO</div>
+                <div class="person-label me">BRUNO</div>
                 <div class="person-inputs">
                   <div class="inp-group"><span class="inp-label">REPS</span><input class="s-input me-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.meReps}" onchange="${isModal?'modalExercises':'exercises'}[${i}].sets[${si}].meReps=this.value"/></div>
                   <div class="inp-group"><span class="inp-label">KG</span><input class="s-input me-inp" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.meKg}" onchange="${isModal?'modalExercises':'exercises'}[${i}].sets[${si}].meKg=this.value"/></div>
@@ -687,7 +687,7 @@ function renderResumen(){
 
   el.innerHTML=`
     <div style="height:.75rem"></div>
-    ${renderPerson('Yo','me',allExMe,bestMe,gainMe)}
+    ${renderPerson('Bruno','me',allExMe,bestMe,gainMe)}
     ${renderPerson('Damián','dam',allExDam,bestDam,gainDam)}
     <div style="height:.5rem"></div>
   `;
