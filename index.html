@@ -634,7 +634,7 @@ async function renderHistorial(){
     el.innerHTML=`<div class="empty"><div class="empty-icon">🏋️</div><div class="empty-text">No hay sesiones todavía.<br>¡A entrenar!</div></div>`;
     return;
   }
-  el.innerHTML=`<div style="height:.75rem"></div>`+sessions.map(s=>`
+  const grouped={};   sessions.forEach(s=>{ if(!grouped[s.fecha]) grouped[s.fecha]=[]; grouped[s.fecha].push(s); });   el.innerHTML=`<div style="height:.75rem"></div>`+Object.entries(grouped).sort((a,b)=>b[0].localeCompare(a[0])).map(([fecha,sesiones])=>`     <div style="margin:.75rem 1.25rem 0">       <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:.04em;padding:.75rem 0 .5rem;border-bottom:1px solid var(--border)">${formatFecha(fecha)}</div>     </div>     ${sesiones.map(s=>`
     <div class="session-card">
       <div class="session-head">
         <div><div class="session-date">${formatFecha(s.fecha)}</div><div class="session-muscle">${s.muscle}</div></div>
