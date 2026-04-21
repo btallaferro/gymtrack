@@ -29,12 +29,11 @@
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;overscroll-behavior:none}
 .app{max-width:500px;margin:0 auto;padding-bottom:100px}
 
-/* Header */
-header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(15,25,50,.9) 0%,transparent 100%)}
+header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border)}
 .logo{font-family:'Barlow Condensed',sans-serif;font-size:2.8rem;font-weight:700;letter-spacing:.06em;line-height:1}
 .logo span{color:var(--accent)}
 .duo{display:flex;gap:10px;align-items:center;margin-top:.5rem}
-.duo-badge{padding:5px 14px;border-radius:20px;font-size:14px;font-weight:600;letter-spacing:.02em}
+.duo-badge{padding:5px 14px;border-radius:20px;font-size:14px;font-weight:600}
 .duo-me{background:rgba(200,255,0,.12);color:var(--me);border:1px solid rgba(200,255,0,.3)}
 .duo-dam{background:rgba(179,136,255,.12);color:var(--dam);border:1px solid rgba(179,136,255,.3)}
 .sync-status{font-size:12px;margin-top:8px;display:flex;align-items:center;gap:6px}
@@ -44,37 +43,29 @@ header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);back
 .sync-dot.loading{background:#ff9800;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* Nav */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);border-top:1px solid var(--border);display:flex;max-width:500px;margin:0 auto;padding-bottom:env(safe-area-inset-bottom)}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0 14px;cursor:pointer;color:var(--muted);font-size:12px;font-weight:500;border:none;background:none;transition:color .15s;font-family:'Barlow',sans-serif}
 .nav-item.active{color:var(--accent)}
 .nav-icon{font-size:22px;line-height:1}
 
-/* Section labels */
 .section-label{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:1.25rem 1.5rem .5rem}
-
-/* Cards */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:18px;margin:0 1.25rem 1rem;overflow:hidden}
 .card-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .card-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-/* Muscle pills */
 .muscle-grid{display:flex;flex-wrap:wrap;gap:8px;padding:.5rem 1.25rem 1rem}
 .mpill{padding:9px 16px;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);transition:all .15s;font-family:'Barlow',sans-serif}
 .mpill.active{background:rgba(200,255,0,.12);border-color:rgba(200,255,0,.4);color:var(--accent)}
 
-/* Inputs */
 .date-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:13px 16px;font-size:16px;color:var(--text);font-family:'Barlow',sans-serif}
 .date-input:focus{outline:none;border-color:rgba(200,255,0,.5)}
 .text-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:15px;color:var(--text);font-family:'Barlow',sans-serif;resize:none}
 .text-input:focus{outline:none;border-color:rgba(200,255,0,.3)}
 .text-input::placeholder{color:var(--muted)}
 
-/* Copy last btn */
-.copy-last-btn{background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.25);border-radius:10px;color:var(--accent);font-size:13px;font-weight:500;cursor:pointer;padding:8px 14px;font-family:'Barlow',sans-serif;transition:all .15s}
+.copy-last-btn{background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.25);border-radius:10px;color:var(--accent);font-size:13px;font-weight:500;cursor:pointer;padding:8px 14px;font-family:'Barlow',sans-serif}
 .copy-last-btn:disabled{opacity:.3;cursor:not-allowed}
 
-/* Exercise blocks */
 .ex-block{border-bottom:1px solid var(--border)}
 .ex-block:last-child{border-bottom:none}
 .ex-header{display:flex;align-items:center;padding:14px 1.25rem;cursor:pointer;gap:10px;min-height:56px}
@@ -85,28 +76,35 @@ header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);back
 .ex-summary{font-size:13px;color:var(--muted);white-space:nowrap;flex-shrink:0}
 .del-btn{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;padding:6px;flex-shrink:0;line-height:1}
 
+/* No-weight toggle */
+.no-weight-row{display:flex;align-items:center;gap:8px;padding:6px 1.25rem 10px}
+.no-weight-label{font-size:13px;color:var(--muted)}
+.toggle-switch{position:relative;width:38px;height:22px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-slider{position:absolute;inset:0;background:var(--surface3);border-radius:22px;cursor:pointer;transition:background .2s}
+.toggle-slider:before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:var(--muted);border-radius:50%;transition:all .2s}
+.toggle-switch input:checked+.toggle-slider{background:rgba(200,255,0,.25)}
+.toggle-switch input:checked+.toggle-slider:before{transform:translateX(16px);background:var(--accent)}
+
 .sets-panel{display:none;padding:0 1.25rem 14px}
 .sets-panel.open{display:block}
 
-/* Set blocks */
 .set-block{background:var(--surface2);border-radius:14px;margin-bottom:10px;overflow:hidden;border:1px solid var(--border)}
 .set-block-header{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);gap:8px}
 .set-label{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.08em;flex-shrink:0}
 .del-set{background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;padding:3px 6px;line-height:1;flex-shrink:0}
-
-/* Timer */
 .set-timer{display:flex;align-items:center;gap:8px;flex:1;justify-content:flex-end}
 .timer-btn{background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.3);border-radius:8px;color:var(--accent2);font-size:12px;cursor:pointer;padding:5px 10px;font-family:'Barlow',sans-serif;white-space:nowrap;transition:all .15s}
 .timer-btn.running{background:rgba(200,255,0,.1);border-color:rgba(200,255,0,.4);color:var(--accent)}
 .timer-display{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;color:var(--accent);min-width:40px;text-align:right}
 
-/* Set persons */
 .set-persons{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
 .set-person{background:var(--surface2);padding:12px 14px}
 .person-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;margin-bottom:10px}
 .person-label.me{color:var(--me)}
 .person-label.dam{color:var(--dam)}
 .person-inputs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.person-inputs.no-weight-inputs{grid-template-columns:1fr}
 .inp-group{display:flex;flex-direction:column;gap:4px}
 .inp-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--muted);letter-spacing:.07em;text-align:center}
 .s-input{background:var(--surface3);border:1px solid var(--border);border-radius:10px;padding:10px 6px;font-size:18px;font-weight:600;text-align:center;color:var(--text);font-family:'Barlow',sans-serif;width:100%;-moz-appearance:textfield;transition:border-color .15s}
@@ -115,18 +113,19 @@ header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);back
 .s-input.dam-inp:focus{outline:none;border-color:rgba(179,136,255,.6);background:rgba(179,136,255,.05)}
 
 .add-set-btn{background:none;border:1px dashed rgba(255,255,255,.12);border-radius:10px;color:var(--muted);font-size:13px;cursor:pointer;padding:10px;width:100%;margin-top:6px;font-family:'Barlow',sans-serif;transition:all .15s}
-.add-set-btn:hover{border-color:var(--muted);color:var(--text)}
-
 .add-row{display:flex;gap:10px;margin:12px 1.25rem 0}
 .add-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:15px;color:var(--text);font-family:'Barlow',sans-serif}
 .add-input:focus{outline:none;border-color:rgba(200,255,0,.4)}
 .add-input::placeholder{color:var(--muted)}
-.add-btn{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px 18px;color:var(--accent);font-size:22px;cursor:pointer;line-height:1;transition:background .15s}
-.add-btn:hover{background:var(--surface3)}
+.add-btn{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px 18px;color:var(--accent);font-size:22px;cursor:pointer;line-height:1}
 
+/* Save button — normal + floating */
 .save-btn{display:block;width:calc(100% - 2.5rem);margin:1.25rem auto 0;background:var(--accent);color:#0a0f1e;border:none;border-radius:14px;padding:17px;font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:.1em;cursor:pointer;transition:opacity .15s}
 .save-btn:active{transform:scale(.98)}
 .save-btn:disabled{opacity:.5;cursor:not-allowed}
+.save-btn-float{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);width:calc(100% - 2.5rem);max-width:450px;background:var(--accent);color:#0a0f1e;border:none;border-radius:14px;padding:16px;font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:.1em;cursor:pointer;z-index:99;box-shadow:0 4px 24px rgba(0,0,0,.4);transition:opacity .2s}
+.save-btn-float.visible{display:block}
+.save-btn-float:disabled{opacity:.5;cursor:not-allowed}
 
 /* History */
 .session-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;margin:.75rem 1.25rem 0;overflow:hidden}
@@ -134,11 +133,11 @@ header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);back
 .session-date{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:.04em;line-height:1.1}
 .session-muscle{font-size:13px;color:var(--muted);margin-top:3px}
 .session-actions{display:flex;gap:8px;align-items:center}
-.btn-icon{background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:16px;cursor:pointer;padding:7px 10px;line-height:1;transition:all .15s}
+.btn-icon{background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:16px;cursor:pointer;padding:7px 10px;line-height:1}
 .btn-icon.edit{color:var(--accent);border-color:rgba(200,255,0,.3);background:rgba(200,255,0,.07)}
 .session-note{padding:8px 1.25rem 10px;font-size:13px;color:var(--muted);font-style:italic;border-top:1px solid var(--border)}
 .h-ex{border-top:1px solid var(--border);padding:12px 1.25rem}
-.h-ex-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;margin-bottom:10px;letter-spacing:.04em;color:var(--text)}
+.h-ex-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;margin-bottom:10px;letter-spacing:.04em}
 .h-set{display:grid;grid-template-columns:32px 1fr 1fr;gap:8px;align-items:start;margin-bottom:8px}
 .h-set-num{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;color:var(--muted);padding-top:4px}
 .h-person{padding:6px 10px;border-radius:10px;font-size:13px}
@@ -159,7 +158,7 @@ header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);back
 
 /* Stats */
 .stats-section{padding:1.25rem 1.25rem .75rem}
-.stats-tabs{display:flex;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.stats-tabs{display:flex;border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .stats-tab{flex:1;padding:11px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;letter-spacing:.08em;cursor:pointer;background:none;border:none;color:var(--muted);transition:all .15s}
 .stats-tab.active{background:var(--surface2);color:var(--text)}
 
@@ -182,7 +181,6 @@ header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);back
 .ps-best span{font-weight:600;color:var(--text)}
 .streak-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(200,255,0,.1);color:var(--accent);border:1px solid rgba(200,255,0,.2);margin-left:auto}
 
-/* Chart */
 .chart-filters{padding:.75rem 1.25rem 1rem}
 .filter-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--muted);margin-bottom:7px}
 .ex-select{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:15px;color:var(--text);font-family:'Barlow',sans-serif;margin-bottom:12px;appearance:none}
@@ -212,6 +210,7 @@ header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);back
 
 <div id="toast" class="toast"></div>
 <div id="modal" class="modal-overlay" style="display:none"></div>
+<button class="save-btn-float" id="save-btn-float" onclick="guardarSesion()">Guardar sesión</button>
 
 <div class="app">
   <header>
@@ -236,11 +235,11 @@ header{padding:1.75rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);back
     <div class="section-label">Grupo muscular</div>
     <div class="muscle-grid" id="reg-muscle-pills">
       <div class="mpill active" onclick="selectMuscle(this,'Pecho')">🛡️ Pecho</div>
-      <div class="mpill" onclick="selectMuscle(this,'Espalda')">🔙 Espalda</div>
+      <div class="mpill" onclick="selectMuscle(this,'Espalda')">🦾 Espalda</div>
       <div class="mpill" onclick="selectMuscle(this,'Piernas')">🦵 Piernas</div>
       <div class="mpill" onclick="selectMuscle(this,'Hombros')">🦅 Hombros</div>
-      <div class="mpill" onclick="selectMuscle(this,'Brazos')">💪 Brazos</div>
-      <div class="mpill" onclick="selectMuscle(this,'Full Body')">⚡ Full Body</div>
+      <div class="mpill" onclick="selectMuscle(this,'Bíceps')">💪 Bíceps</div>
+      <div class="mpill" onclick="selectMuscle(this,'Tríceps')">🔱 Tríceps</div>
       <div class="mpill" onclick="selectMuscle(this,'Abdominales')">🔥 Abdominales</div>
     </div>
 
@@ -331,8 +330,8 @@ const EXERCISES = {
   'Espalda':     ['Dominadas','Remo con barra','Jalón al pecho','Remo sentado en polea','Pullover con mancuerna','Remo con mancuerna'],
   'Piernas':     ['Sentadilla','Prensa de piernas','Extensiones de cuádriceps','Curl femoral','Peso muerto rumano','Pantorrillas de pie'],
   'Hombros':     ['Press militar con barra','Press Arnold','Elevaciones laterales','Pájaro / posteriores','Remo al mentón','Face pulls'],
-  'Brazos':      ['Curl con barra','Curl con mancuerna','Martillo','Tríceps en polea','Rompecráneos','Press francés'],
-  'Full Body':   ['Peso muerto','Sentadilla','Press banca plano','Dominadas','Press militar con barra','Peso muerto rumano'],
+  'Bíceps':      ['Curl con barra','Curl con mancuerna','Martillo','Curl concentración','Curl en polea','Curl 21'],
+  'Tríceps':     ['Tríceps en polea','Rompecráneos','Press francés','Fondos en banco','Patada de tríceps','Press cerrado'],
   'Abdominales': ['Crunch','Plancha','Rueda abdominal','Elevación de piernas','Crunch inverso','Oblicuos con polea']
 };
 
@@ -343,7 +342,7 @@ let currentStatsTab='resumen';
 const timerState={};
 
 function makeSet(){ return {meReps:'',meKg:'',damReps:'',damKg:''} }
-function makeExercise(name){ return {name,open:true,sets:[makeSet(),makeSet(),makeSet()]} }
+function makeExercise(name){ return {name,open:true,noWeight:false,sets:[makeSet(),makeSet(),makeSet()]} }
 
 async function init(){
   document.getElementById('fecha').value=new Date().toISOString().split('T')[0];
@@ -357,6 +356,19 @@ async function init(){
     setSyncStatus('err','Sin conexión');
     showToast('Error al conectar con la nube',true);
   }
+  // Floating save button on scroll
+  const tabReg=document.getElementById('tab-registro');
+  const saveBtn=document.getElementById('save-btn');
+  const floatBtn=document.getElementById('save-btn-float');
+  window.addEventListener('scroll',()=>{
+    if(!document.getElementById('tab-registro').classList.contains('active')) return;
+    const rect=saveBtn.getBoundingClientRect();
+    if(rect.top>window.innerHeight){
+      floatBtn.classList.add('visible');
+    } else {
+      floatBtn.classList.remove('visible');
+    }
+  });
 }
 
 function setSyncStatus(s,t){ document.getElementById('sync-dot').className='sync-dot '+s; document.getElementById('sync-text').textContent=t; }
@@ -376,7 +388,7 @@ function updateCopyBtn(){
 function copyLastSession(){
   const last=sessions.find(s=>s.muscle===currentMuscle);
   if(!last) return;
-  exercises=JSON.parse(JSON.stringify(last.exercises)).map(ex=>({...ex,open:true,sets:ex.sets.map(s=>({...s}))}));
+  exercises=JSON.parse(JSON.stringify(last.exercises)).map(ex=>({...ex,open:true,noWeight:ex.noWeight||false}));
   renderExercises(exercises,'exercise-list',false);
   showToast('Rutina anterior cargada');
 }
@@ -397,6 +409,11 @@ function removeExercise(i,listId,isModal){ const arr=isModal?modalExercises:exer
 function toggleEx(i,listId,isModal){ const arr=isModal?modalExercises:exercises; arr[i].open=!arr[i].open; renderExercises(arr,listId,isModal); }
 function addSet(i,listId,isModal){ const arr=isModal?modalExercises:exercises; arr[i].sets.push(makeSet()); renderExercises(arr,listId,isModal); }
 function removeSet(i,si,listId,isModal){ const arr=isModal?modalExercises:exercises; if(arr[i].sets.length<=1) return; arr[i].sets.splice(si,1); renderExercises(arr,listId,isModal); }
+function toggleNoWeight(i,listId,isModal){
+  const arr=isModal?modalExercises:exercises;
+  arr[i].noWeight=!arr[i].noWeight;
+  renderExercises(arr,listId,isModal);
+}
 
 function readDOM(listId,isModal){
   const arr=isModal?modalExercises:exercises;
@@ -407,10 +424,17 @@ function readDOM(listId,isModal){
     block.querySelectorAll('.set-block').forEach((sb,si)=>{
       if(!arr[i].sets[si]) return;
       const inputs=sb.querySelectorAll('input[type=number]');
-      arr[i].sets[si].meReps=inputs[0]?.value||'';
-      arr[i].sets[si].meKg=inputs[1]?.value||'';
-      arr[i].sets[si].damReps=inputs[2]?.value||'';
-      arr[i].sets[si].damKg=inputs[3]?.value||'';
+      if(arr[i].noWeight){
+        arr[i].sets[si].meReps=inputs[0]?.value||'';
+        arr[i].sets[si].meKg='';
+        arr[i].sets[si].damReps=inputs[1]?.value||'';
+        arr[i].sets[si].damKg='';
+      } else {
+        arr[i].sets[si].meReps=inputs[0]?.value||'';
+        arr[i].sets[si].meKg=inputs[1]?.value||'';
+        arr[i].sets[si].damReps=inputs[2]?.value||'';
+        arr[i].sets[si].damKg=inputs[3]?.value||'';
+      }
     });
   });
 }
@@ -420,7 +444,6 @@ function startTimer(key){
   timerState[key]={seconds:0,interval:setInterval(()=>{ timerState[key].seconds++; updateTimerDisplay(key,timerState[key].seconds,true); },1000)};
   updateTimerDisplay(key,0,true);
 }
-
 function updateTimerDisplay(key,secs,running){
   const display=document.getElementById('timer-'+key);
   const btn=document.getElementById('tbtn-'+key);
@@ -431,6 +454,42 @@ function updateTimerDisplay(key,secs,running){
   btn.className='timer-btn'+(running?' running':'');
 }
 
+function renderSetInputs(s, si, i, isModal, noWeight){
+  const arr = isModal?'modalExercises':'exercises';
+  if(noWeight){
+    return `<div class="set-persons">
+      <div class="set-person">
+        <div class="person-label me">BRUNO</div>
+        <div class="person-inputs no-weight-inputs">
+          <div class="inp-group"><span class="inp-label">REPS</span><input class="s-input me-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.meReps}" onchange="${arr}[${i}].sets[${si}].meReps=this.value"/></div>
+        </div>
+      </div>
+      <div class="set-person">
+        <div class="person-label dam">DAMIÁN</div>
+        <div class="person-inputs no-weight-inputs">
+          <div class="inp-group"><span class="inp-label">REPS</span><input class="s-input dam-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.damReps}" onchange="${arr}[${i}].sets[${si}].damReps=this.value"/></div>
+        </div>
+      </div>
+    </div>`;
+  }
+  return `<div class="set-persons">
+    <div class="set-person">
+      <div class="person-label me">BRUNO</div>
+      <div class="person-inputs">
+        <div class="inp-group"><span class="inp-label">REPS</span><input class="s-input me-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.meReps}" onchange="${arr}[${i}].sets[${si}].meReps=this.value"/></div>
+        <div class="inp-group"><span class="inp-label">KG</span><input class="s-input me-inp" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.meKg}" onchange="${arr}[${i}].sets[${si}].meKg=this.value"/></div>
+      </div>
+    </div>
+    <div class="set-person">
+      <div class="person-label dam">DAMIÁN</div>
+      <div class="person-inputs">
+        <div class="inp-group"><span class="inp-label">REPS</span><input class="s-input dam-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.damReps}" onchange="${arr}[${i}].sets[${si}].damReps=this.value"/></div>
+        <div class="inp-group"><span class="inp-label">KG</span><input class="s-input dam-inp" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.damKg}" onchange="${arr}[${i}].sets[${si}].damKg=this.value"/></div>
+      </div>
+    </div>
+  </div>`;
+}
+
 function renderExercises(arr,listId,isModal){
   document.getElementById(listId).innerHTML=arr.map((ex,i)=>`
     <div class="ex-block">
@@ -439,6 +498,13 @@ function renderExercises(arr,listId,isModal){
         <input class="ex-name-input" value="${ex.name}" onclick="event.stopPropagation()" onchange="${isModal?'modalExercises':'exercises'}[${i}].name=this.value" />
         <span class="ex-summary">${ex.sets.length} series</span>
         <button class="del-btn" onclick="event.stopPropagation();readDOM('${listId}',${isModal});removeExercise(${i},'${listId}',${isModal})">✕</button>
+      </div>
+      <div class="no-weight-row">
+        <label class="toggle-switch">
+          <input type="checkbox" ${ex.noWeight?'checked':''} onchange="readDOM('${listId}',${isModal});toggleNoWeight(${i},'${listId}',${isModal})"/>
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="no-weight-label">Sin peso (solo reps)</span>
       </div>
       <div class="sets-panel ${ex.open?'open':''}">
         ${ex.sets.map((s,si)=>{
@@ -452,22 +518,7 @@ function renderExercises(arr,listId,isModal){
               </div>
               <button class="del-set" onclick="readDOM('${listId}',${isModal});removeSet(${i},${si},'${listId}',${isModal})">✕</button>
             </div>
-            <div class="set-persons">
-              <div class="set-person">
-                <div class="person-label me">BRUNO</div>
-                <div class="person-inputs">
-                  <div class="inp-group"><span class="inp-label">REPS</span><input class="s-input me-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.meReps}" onchange="${isModal?'modalExercises':'exercises'}[${i}].sets[${si}].meReps=this.value"/></div>
-                  <div class="inp-group"><span class="inp-label">KG</span><input class="s-input me-inp" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.meKg}" onchange="${isModal?'modalExercises':'exercises'}[${i}].sets[${si}].meKg=this.value"/></div>
-                </div>
-              </div>
-              <div class="set-person">
-                <div class="person-label dam">DAMIÁN</div>
-                <div class="person-inputs">
-                  <div class="inp-group"><span class="inp-label">REPS</span><input class="s-input dam-inp" type="number" min="1" inputmode="numeric" placeholder="—" value="${s.damReps}" onchange="${isModal?'modalExercises':'exercises'}[${i}].sets[${si}].damReps=this.value"/></div>
-                  <div class="inp-group"><span class="inp-label">KG</span><input class="s-input dam-inp" type="number" min="0" step="0.5" inputmode="decimal" placeholder="—" value="${s.damKg}" onchange="${isModal?'modalExercises':'exercises'}[${i}].sets[${si}].damKg=this.value"/></div>
-                </div>
-              </div>
-            </div>
+            ${renderSetInputs(s,si,i,isModal,ex.noWeight)}
           </div>`;
         }).join('')}
         <button class="add-set-btn" onclick="readDOM('${listId}',${isModal});addSet(${i},'${listId}',${isModal})">+ Agregar serie</button>
@@ -484,7 +535,9 @@ async function guardarSesion(){
   const exFilled=exercises.map(ex=>({...ex,sets:ex.sets.filter(s=>s.meReps||s.meKg||s.damReps||s.damKg)})).filter(ex=>ex.sets.length>0);
   if(!exFilled.length){ alert('Ingresá al menos una serie con datos'); return; }
   const btn=document.getElementById('save-btn');
+  const btnF=document.getElementById('save-btn-float');
   btn.disabled=true; btn.textContent='Guardando...';
+  btnF.disabled=true; btnF.textContent='Guardando...';
   setSyncStatus('loading','Guardando...');
   try {
     await api.insert({fecha,muscle:currentMuscle,exercises:exFilled,notas});
@@ -496,13 +549,16 @@ async function guardarSesion(){
   } catch(e) {
     setSyncStatus('err','Error al guardar');
     showToast('Error al guardar',true);
-  } finally { btn.disabled=false; btn.textContent='Guardar sesión'; }
+  } finally {
+    btn.disabled=false; btn.textContent='Guardar sesión';
+    btnF.disabled=false; btnF.textContent='Guardar sesión';
+  }
 }
 
 function openEdit(id){
   const s=sessions.find(x=>x.id===id); if(!s) return;
   editingSessionId=id;
-  modalExercises=JSON.parse(JSON.stringify(s.exercises)).map(ex=>({...ex,open:true}));
+  modalExercises=JSON.parse(JSON.stringify(s.exercises)).map(ex=>({...ex,open:true,noWeight:ex.noWeight||false}));
   const modal=document.getElementById('modal');
   modal.style.display='flex';
   modal.innerHTML=`
@@ -558,6 +614,7 @@ function showTab(tab){
   document.querySelectorAll('.nav-item').forEach(el=>el.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
   ['registro','historial','stats'].forEach((t,i)=>{ if(t===tab) document.querySelectorAll('.nav-item')[i].classList.add('active'); });
+  document.getElementById('save-btn-float').classList.remove('visible');
   if(tab==='historial') renderHistorial();
   if(tab==='stats') renderStats();
 }
@@ -593,8 +650,14 @@ async function renderHistorial(){
           ${ex.sets.map((set,si)=>`
             <div class="h-set">
               <div class="h-set-num">S${si+1}</div>
-              <div class="h-person h-me"><div class="h-person-label me">BRUNO</div><div class="h-person-data">${set.meReps||'—'} reps · ${set.meKg||'—'} kg</div></div>
-              <div class="h-person h-dam"><div class="h-person-label dam">DAMIÁN</div><div class="h-person-data">${set.damReps||'—'} reps · ${set.damKg||'—'} kg</div></div>
+              <div class="h-person h-me">
+                <div class="h-person-label me">BRUNO</div>
+                <div class="h-person-data">${ex.noWeight ? (set.meReps||'—')+' reps' : (set.meReps||'—')+' reps · '+(set.meKg||'—')+' kg'}</div>
+              </div>
+              <div class="h-person h-dam">
+                <div class="h-person-label dam">DAMIÁN</div>
+                <div class="h-person-data">${ex.noWeight ? (set.damReps||'—')+' reps' : (set.damReps||'—')+' reps · '+(set.damKg||'—')+' kg'}</div>
+              </div>
             </div>
           `).join('')}
         </div>
@@ -620,7 +683,7 @@ function switchStatsTab(tab){
 function calcStreak(sessions){
   if(!sessions.length) return 0;
   const dates=[...new Set(sessions.map(s=>s.fecha))].sort().reverse();
-  let streak=0, prev=null;
+  let streak=0,prev=null;
   for(const d of dates){
     if(!prev){ streak=1; prev=d; continue; }
     const diff=(new Date(prev)-new Date(d))/(1000*60*60*24);
@@ -656,7 +719,7 @@ function renderResumen(){
   }
   const prMe={},prDam={};
   sessions.forEach(s=>s.exercises.forEach(ex=>ex.sets.forEach(set=>{
-    const me=parseFloat(set.meKg)||0, dam=parseFloat(set.damKg)||0;
+    const me=parseFloat(set.meKg)||0,dam=parseFloat(set.damKg)||0;
     if(me&&(!prMe[ex.name]||me>prMe[ex.name])) prMe[ex.name]=me;
     if(dam&&(!prDam[ex.name]||dam>prDam[ex.name])) prDam[ex.name]=dam;
   })));
@@ -670,7 +733,7 @@ function renderResumen(){
     <div class="person-summary">
       <div class="ps-header">
         <div class="ps-name" style="color:var(--${colorClass})">${name}</div>
-        ${streak>1?`<div class="streak-badge">🔥 ${streak} semanas seguidas</div>`:''}
+        ${streak>1?`<div class="streak-badge">🔥 ${streak} semanas</div>`:''}
       </div>
       <div class="ps-stats">
         <div class="ps-stat"><div class="ps-stat-num" style="color:var(--${colorClass})">${sessions.length}</div><div class="ps-stat-label">Sesiones totales</div></div>
@@ -705,25 +768,48 @@ function togglePerson(who){
   renderChart();
 }
 
+function isNoWeightExercise(exName){
+  return (sessions||[]).some(s=>s.exercises.some(ex=>ex.name===exName&&ex.noWeight));
+}
+
 function renderChart(){
   const sel=document.getElementById('ex-select');
   const selEx=sel?.value;
   const noData=document.getElementById('no-data');
   const canvas=document.getElementById('stats-chart');
   if(!selEx||!sessions||!sessions.length){ if(noData) noData.style.display='flex'; return; }
+
+  const noWeight=isNoWeightExercise(selEx);
   const relevant=(sessions||[]).filter(s=>s.exercises.some(ex=>ex.name===selEx)).sort((a,b)=>a.fecha.localeCompare(b.fecha));
+
   if(!relevant.length){ canvas.style.display='none'; noData.style.display='flex'; if(chartInstance){chartInstance.destroy();chartInstance=null;} return; }
   canvas.style.display='block'; noData.style.display='none';
+
   const labels=[],meData=[],damData=[];
   relevant.forEach(s=>{
     const ex=s.exercises.find(e=>e.name===selEx);
     let meMax=null,damMax=null;
-    if(ex){ ex.sets.forEach(set=>{ const me=parseFloat(set.meKg)||0,dam=parseFloat(set.damKg)||0; if(me&&(meMax===null||me>meMax)) meMax=me; if(dam&&(damMax===null||dam>damMax)) damMax=dam; }); }
+    if(ex){
+      ex.sets.forEach(set=>{
+        if(noWeight){
+          const me=parseInt(set.meReps)||0, dam=parseInt(set.damReps)||0;
+          if(me&&(meMax===null||me>meMax)) meMax=me;
+          if(dam&&(damMax===null||dam>damMax)) damMax=dam;
+        } else {
+          const me=parseFloat(set.meKg)||0, dam=parseFloat(set.damKg)||0;
+          if(me&&(meMax===null||me>meMax)) meMax=me;
+          if(dam&&(damMax===null||dam>damMax)) damMax=dam;
+        }
+      });
+    }
     labels.push(formatFecha(s.fecha)); meData.push(meMax); damData.push(damMax);
   });
+
+  const yLabel=noWeight?'reps':'kg';
   const datasets=[];
   if(showMe) datasets.push({label:'Bruno',data:meData,borderColor:'#c8ff00',backgroundColor:'rgba(200,255,0,.08)',pointBackgroundColor:'#c8ff00',pointRadius:6,tension:.3,fill:true,spanGaps:true});
   if(showDam) datasets.push({label:'Damián',data:damData,borderColor:'#b388ff',backgroundColor:'rgba(179,136,255,.08)',pointBackgroundColor:'#b388ff',pointRadius:6,tension:.3,fill:true,spanGaps:true});
+
   if(chartInstance) chartInstance.destroy();
   chartInstance=new Chart(canvas,{
     type:'line',data:{labels,datasets},
@@ -731,11 +817,11 @@ function renderChart(){
       responsive:true,maintainAspectRatio:false,
       plugins:{
         legend:{labels:{color:'#8fa3c8',font:{family:'Barlow',size:13},boxWidth:12,padding:16}},
-        tooltip:{backgroundColor:'#1a2235',titleColor:'#f0f4ff',bodyColor:'#8fa3c8',borderColor:'rgba(255,255,255,.1)',borderWidth:1,padding:10,callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y} kg`}}
+        tooltip:{backgroundColor:'#1a2235',titleColor:'#f0f4ff',bodyColor:'#8fa3c8',borderColor:'rgba(255,255,255,.1)',borderWidth:1,padding:10,callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y} ${yLabel}`}}
       },
       scales:{
         x:{ticks:{color:'#6b7fa8',font:{size:11},maxRotation:45},grid:{color:'rgba(255,255,255,.05)'}},
-        y:{ticks:{color:'#6b7fa8',font:{size:12},callback:v=>v+' kg'},grid:{color:'rgba(255,255,255,.05)'},beginAtZero:false}
+        y:{ticks:{color:'#6b7fa8',font:{size:12},callback:v=>v+' '+yLabel},grid:{color:'rgba(255,255,255,.05)'},beginAtZero:false}
       }
     }
   });
